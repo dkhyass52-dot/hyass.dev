@@ -11,7 +11,8 @@ import { external } from '../lib/links'
 export default function Showcase({ project }) {
   const root = useRef(null)
   const [ready, setReady] = useState(false)
-  const domain = project.demo ? project.demo.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.slug
+  // Barre d'adresse : le domaine du site, ou le nom du projet s'il n'est pas en ligne.
+  const domain = project.demo ? project.demo.replace(/^https?:\/\//, '').replace(/\/$/, '') : project.name
 
   // Distance à parcourir dans chaque cadre (hauteur de l'image moins hauteur visible) et durée commune.
   useEffect(() => {

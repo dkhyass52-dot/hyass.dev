@@ -111,9 +111,11 @@ function ProjectRow({ project: p, index, open, onToggle, onHover }) {
                 )}
               </dl>
               <div className="pj-links">
-                <LinkButton href={p.demo} newTab className="btn btn-ink btn-sm" missing={`Lien de démo à ajouter dans src/data/projects.js (${p.name})`}>
-                  {p.live ? 'Voir le site' : 'Voir la démo'} <Arrow />
-                </LinkButton>
+                {p.demo !== null && (
+                  <LinkButton href={p.demo} newTab className="btn btn-ink btn-sm" missing={`Lien de démo à ajouter dans src/data/projects.js (${p.name})`}>
+                    {p.live ? 'Voir le site' : 'Voir la démo'} <Arrow />
+                  </LinkButton>
+                )}
                 {p.github !== null && (
                   <LinkButton href={p.github} className="btn btn-line btn-sm" missing={`Lien GitHub à ajouter dans src/data/projects.js (${p.name})`}>
                     Code sur GitHub

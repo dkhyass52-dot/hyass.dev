@@ -4,6 +4,9 @@ import apaiMobile from '../assets/projects/apai-mobile.webp'
 import tchaibouCover from '../assets/projects/tchaibou-cover.webp'
 import tchaibouDesktop from '../assets/projects/tchaibou-desktop.webp'
 import tchaibouMobile from '../assets/projects/tchaibou-mobile.webp'
+import seguroCover from '../assets/projects/seguro-cover.webp'
+import seguroDesktop from '../assets/projects/seguro-desktop.webp'
+import seguroMobile from '../assets/projects/seguro-mobile.webp'
 
 /*
  * Les projets affichés dans la section « Projets », dans l'ordre (le premier est ouvert au départ).
@@ -15,6 +18,7 @@ import tchaibouMobile from '../assets/projects/tchaibou-mobile.webp'
  * - mockup : maquette animée dessinée en code, utilisée tant qu'il n'y a ni `image` ni `pages`
  *            ('hotel', 'portfolio', 'expenses', 'freshjoy' ou 'stream').
  * - demo   : lien du site. `live: true` affiche « Voir le site » au lieu de « Voir la démo ».
+ *            null = pas de lien (projet en local) : aucun bouton n'est affiché.
  * - github : lien du code. '' = pas encore renseigné (masqué en ligne), null = sans objet (ex. site WordPress).
  *
  * Pour ajouter un projet : mets ses images dans src/assets/projects/, importe-les en haut de ce fichier
@@ -52,15 +56,15 @@ export const projects = [
   },
   {
     slug: 'hotel-seguro',
-    color: '#D99A1E', // couleur du projet (survol, pastille, aperçu)
+    color: '#1F7A62',
     name: 'Hotel Seguro',
-    kind: 'Projet académique',
-    stack: [],
+    kind: 'Application web',
+    stack: ['PHP', 'Tailwind CSS'],
     description:
-      "Une plateforme de réservation d'hôtel. Elle centralise la gestion des chambres, des clients et des réservations dans une seule interface.",
-    mockup: 'hotel',
-    image: null,
-    demo: '',
+      "Le site d'un hôtel haut de gamme avec réservation en ligne : recherche de disponibilités par dates et par chambre, présentation des chambres et suites, services et avis clients. Un espace d'administration permet de tout gérer : chambres, réservations et contenu du site.",
+    image: seguroCover,
+    pages: { desktop: seguroDesktop, mobile: seguroMobile },
+    demo: null, // projet en local, pas encore en ligne
     github: '',
   },
   {
