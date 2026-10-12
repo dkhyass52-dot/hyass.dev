@@ -1,15 +1,38 @@
+import apaiCover from '../assets/projects/apai-cover.webp'
+import apaiDesktop from '../assets/projects/apai-desktop.webp'
+import apaiMobile from '../assets/projects/apai-mobile.webp'
+
 /*
- * Les projets affichés dans la section « Projets ».
+ * Les projets affichés dans la section « Projets », dans l'ordre (le premier est ouvert au départ).
  *
  * - color  : la couleur du projet (fond au survol, pastille, contour de l'aperçu).
- * - mockup : la maquette animée utilisée tant qu'il n'y a pas de vraie capture
+ * - image  : l'image du projet (maquette ordinateur + téléphone, format 16:11). Utilisée pour l'aperçu au survol.
+ * - pages  : { desktop, mobile } — captures de la page entière. Dans la fiche ouverte, elles défilent
+ *            dans un cadre de navigateur et de téléphone (au survol sur ordinateur, toutes seules sur mobile).
+ * - mockup : maquette animée dessinée en code, utilisée tant qu'il n'y a ni `image` ni `pages`
  *            ('hotel', 'portfolio', 'expenses', 'freshjoy' ou 'stream').
- * - image  : une vraie capture d'écran (format 16:11 idéalement). Si elle est renseignée, elle remplace la maquette.
- *            Exemple : import hotelSeguro from '../assets/images/hotel-seguro.webp'  puis  image: hotelSeguro
- * - demo / github : liens. Un lien vide ('') est masqué sur le site en ligne.
+ * - demo   : lien du site. `live: true` affiche « Voir le site » au lieu de « Voir la démo ».
+ * - github : lien du code. '' = pas encore renseigné (masqué en ligne), null = sans objet (ex. site WordPress).
+ *
+ * Pour ajouter un projet : mets ses images dans src/assets/projects/, importe-les en haut de ce fichier
+ * comme pour APAI-Bénin, puis copie un bloc ci-dessous.
  */
 
 export const projects = [
+  {
+    slug: 'apai-benin',
+    color: '#C9963B',
+    name: 'APAI-Bénin',
+    kind: 'Site associatif',
+    stack: ['WordPress', 'Elementor'],
+    description:
+      "Le site de l'Association Professionnelle des Agents Immobiliers du Bénin. Il présente l'association, ses valeurs et ses domaines d'intervention, invite les agents à devenir membres et publie des articles sur la profession.",
+    image: apaiCover,
+    pages: { desktop: apaiDesktop, mobile: apaiMobile },
+    demo: 'https://apai-benin.org',
+    live: true,
+    github: null,
+  },
   {
     slug: 'hotel-seguro',
     color: '#D99A1E', // couleur du projet (survol, pastille, aperçu)

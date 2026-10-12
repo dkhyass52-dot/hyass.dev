@@ -4,6 +4,7 @@ import { headings } from '../data/site'
 import { ScrollTrigger, canPreview, finePointer, reduceMotion } from '../lib/motion'
 import { Arrow, LinkButton, Note, Plus, SectionHead } from './ui'
 import ProjectVisual from './Mockups'
+import Showcase from './Showcase'
 
 export default function Projects() {
   const [open, setOpen] = useState(0) // le premier projet est ouvert au départ
@@ -46,6 +47,11 @@ export default function Projects() {
 
 function ProjectRow({ project: p, index, open, onToggle, onHover }) {
   const detailId = `projet-${p.slug}`
+  // La vitrine (pages entières, plus lourdes) n'est chargée qu'à la première ouverture du projet.
+  const [seen, setSeen] = useState(open)
+  useEffect(() => {
+    if (open) setSeen(true)
+  }, [open])
 
   // Sur ordinateur, la maquette ouverte bouge légèrement avec la souris.
   const tilt = finePointer
@@ -85,9 +91,13 @@ function ProjectRow({ project: p, index, open, onToggle, onHover }) {
       <div className="pj-detail" id={detailId}>
         <div>
           <div className="pj-inner">
-            <div {...tilt}>
-              <ProjectVisual project={p} />
-            </div>
+            {p.pages ? (
+              <div>{seen && <Showcase project={p} />}</div>
+            ) : (
+              <div {...tilt}>
+                <ProjectVisual project={p} />
+              </div>
+            )}
             <div>
               <p className="desc">{p.description}</p>
               <dl>
@@ -102,11 +112,13 @@ function ProjectRow({ project: p, index, open, onToggle, onHover }) {
               </dl>
               <div className="pj-links">
                 <LinkButton href={p.demo} newTab className="btn btn-ink btn-sm" missing={`Lien de démo à ajouter dans src/data/projects.js (${p.name})`}>
-                  Voir la démo <Arrow />
+                  {p.live ? 'Voir le site' : 'Voir la démo'} <Arrow />
                 </LinkButton>
-                <LinkButton href={p.github} className="btn btn-line btn-sm" missing={`Lien GitHub à ajouter dans src/data/projects.js (${p.name})`}>
-                  Code sur GitHub
-                </LinkButton>
+                {p.github !== null && (
+                  <LinkButton href={p.github} className="btn btn-line btn-sm" missing={`Lien GitHub à ajouter dans src/data/projects.js (${p.name})`}>
+                    Code sur GitHub
+                  </LinkButton>
+                )}
               </div>
             </div>
           </div>
