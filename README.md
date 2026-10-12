@@ -50,18 +50,18 @@ Un lien vide (`''`) dans `site.js` ou `projects.js` :
 
 Pour le **CV**, mets ton PDF dans `public/` (ex. `public/cv-hyacinthe-dossakpedji.pdf`). Indique ensuite `cv: '/cv-hyacinthe-dossakpedji.pdf'` dans `site.js`.
 
-### Remplacer une maquette de projet par une vraie capture d'écran
+### Ajouter un projet
 
-1. Mets l'image dans `src/assets/images/` (ex. `hotel-seguro.webp`, format 16:11 idéalement).
-2. Dans `src/data/projects.js`, importe-la en haut du fichier, puis ajoute-la au projet :
+Pour chaque projet, il faut trois images dans `src/assets/projects/` :
 
-```js
-import hotelSeguro from '../assets/images/hotel-seguro.webp'
-// ...
-{ slug: 'hotel-seguro', name: 'Hotel Seguro', image: hotelSeguro, /* ... */ }
-```
+| Fichier | Contenu |
+|---|---|
+| `nom-cover.webp` | maquette ordinateur + téléphone (format 16:11), pour l'aperçu au survol |
+| `nom-desktop.webp` | capture de la page entière sur ordinateur (1200 px de large environ) |
+| `nom-mobile.webp` | capture de la page entière sur mobile |
 
-La capture remplace alors la maquette animée, dans la liste et dans l'aperçu au survol.
+Importe-les en haut de `src/data/projects.js`, puis copie un bloc projet existant et adapte-le (nom, couleur, description, liens).
+Dans la fiche ouverte, les deux captures défilent dans un cadre de navigateur et un téléphone.
 
 ### Changer les photos
 
@@ -71,7 +71,7 @@ Remplace les fichiers dans `src/assets/images/` en gardant les mêmes noms :
 |---|---|---|
 | `hero-setup.jpg` | fond de l'accueil | portrait 3:4, 2000 px de large |
 | `hero-setup-1000.jpg` | même photo, version légère pour mobile | 1000 px de large |
-| `portrait.jpg` | grande carte « À propos » et maquette du portfolio | portrait 4:5 |
+| `portrait.jpg` | grande carte « À propos » | portrait 4:5 |
 | `avatar.jpg` | petite photo ronde du contact | carré, visage centré |
 
 > La photo du setup doit t'appartenir, ou être libre de droits (par exemple sur Unsplash), avant la mise en ligne.
@@ -129,7 +129,8 @@ src/
 │   ├── Services.jsx            services
 │   ├── ServiceIllustrations.jsx  dessins animés des services
 │   ├── Projects.jsx            liste des projets, fiche dépliable, aperçu au survol
-│   ├── Mockups.jsx             maquettes animées des projets
+│   ├── Showcase.jsx            pages entières qui défilent (navigateur + téléphone)
+│   ├── Mockups.jsx             image d'un projet (aperçu au survol)
 │   ├── Process.jsx             méthode en 4 étapes
 │   ├── Skills.jsx              compétences
 │   ├── Contact.jsx             coordonnées + formulaire

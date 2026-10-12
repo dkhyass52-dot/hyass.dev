@@ -31,7 +31,6 @@
   .pj-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
   .js-motion .pj .shot { clip-path: inset(0 0 100% 0); transition: clip-path 1s .15s var(--ease); }
   .js-motion .pj[data-open="true"] .shot { clip-path: inset(0 0 0 0); }
-  .pj .shot .mk { transition: transform .5s var(--ease); }
 
   @media (max-width: 900px) {
     .pj-row { grid-template-columns: 2.4rem minmax(0, 1fr) 2.5rem; padding-block: 1.2rem; }

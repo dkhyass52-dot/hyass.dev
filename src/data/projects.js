@@ -7,6 +7,12 @@ import tchaibouMobile from '../assets/projects/tchaibou-mobile.webp'
 import seguroCover from '../assets/projects/seguro-cover.webp'
 import seguroDesktop from '../assets/projects/seguro-desktop.webp'
 import seguroMobile from '../assets/projects/seguro-mobile.webp'
+import cermaCover from '../assets/projects/cerma-cover.webp'
+import cermaDesktop from '../assets/projects/cerma-desktop.webp'
+import cermaMobile from '../assets/projects/cerma-mobile.webp'
+import portfolioCover from '../assets/projects/portfolio-cover.webp'
+import portfolioDesktop from '../assets/projects/portfolio-desktop.webp'
+import portfolioMobile from '../assets/projects/portfolio-mobile.webp'
 
 /*
  * Les projets affichés dans la section « Projets », dans l'ordre (le premier est ouvert au départ).
@@ -15,14 +21,13 @@ import seguroMobile from '../assets/projects/seguro-mobile.webp'
  * - image  : l'image du projet (maquette ordinateur + téléphone, format 16:11). Utilisée pour l'aperçu au survol.
  * - pages  : { desktop, mobile } — captures de la page entière. Dans la fiche ouverte, elles défilent
  *            dans un cadre de navigateur et de téléphone (au survol sur ordinateur, toutes seules sur mobile).
- * - mockup : maquette animée dessinée en code, utilisée tant qu'il n'y a ni `image` ni `pages`
- *            ('hotel', 'portfolio', 'expenses', 'freshjoy' ou 'stream').
+ *            Sans `pages`, la fiche affiche `image` (ou, à défaut, une carte à la couleur du projet).
  * - demo   : lien du site. `live: true` affiche « Voir le site » au lieu de « Voir la démo ».
  *            null = pas de lien (projet en local) : aucun bouton n'est affiché.
  * - github : lien du code. '' = pas encore renseigné (masqué en ligne), null = sans objet (ex. site WordPress).
  *
- * Pour ajouter un projet : mets ses images dans src/assets/projects/, importe-les en haut de ce fichier
- * comme pour APAI-Bénin, puis copie un bloc ci-dessous.
+ * Pour ajouter un projet : mets ses images dans src/assets/projects/, importe-les en haut de ce fichier,
+ * puis copie un bloc ci-dessous.
  */
 
 export const projects = [
@@ -55,6 +60,20 @@ export const projects = [
     github: null,
   },
   {
+    slug: 'cerma-microfinance',
+    color: '#1B7A7A',
+    name: 'CERMA Microfinance',
+    kind: 'Site vitrine',
+    stack: ['WordPress'],
+    description:
+      "Le site de CERMA Microfinance, une institution de microfinance au Bénin. Il présente ses solutions de crédit et d'épargne, ses chiffres clés et son accompagnement, avec des témoignages de clients et un accès direct à la demande de crédit.",
+    image: cermaCover,
+    pages: { desktop: cermaDesktop, mobile: cermaMobile },
+    demo: 'https://cermamicrofinance.sacomdigitalagency.com',
+    live: true,
+    github: null,
+  },
+  {
     slug: 'hotel-seguro',
     color: '#1F7A62',
     name: 'Hotel Seguro',
@@ -69,51 +88,16 @@ export const projects = [
   },
   {
     slug: 'portfolio',
-    color: '#2350D6',
+    color: '#6E4BF2',
     name: 'Portfolio',
     kind: 'Site personnel',
-    stack: ['React', 'Tailwind CSS', 'Framer Motion'],
-    description: 'Mon portfolio personnel. Il présente mon parcours, mes services et mes projets, avec des animations fluides.',
-    mockup: 'portfolio',
-    image: null,
-    demo: '',
-    github: '',
-  },
-  {
-    slug: 'gestion-depenses',
-    color: '#12A06A',
-    name: 'Gestion de dépenses',
-    kind: 'Application web',
-    stack: ['Laravel', 'MySQL', 'Bootstrap'],
+    stack: ['React', 'Vite', 'Tailwind CSS', 'GSAP'],
     description:
-      "Une application pour suivre ses dépenses. Chaque transaction est enregistrée et l'utilisateur voit où part son argent.",
-    mockup: 'expenses',
-    image: null,
-    demo: '',
-    github: '',
-  },
-  {
-    slug: 'freshjoy',
-    color: '#E8436A',
-    name: 'FreshJoy',
-    kind: 'Page de vente',
-    stack: ['React', 'Tailwind CSS', 'Framer Motion'],
-    description: 'Une page de présentation et de vente pour une marque de yaourt et de bissap, avec une interface moderne et animée.',
-    mockup: 'freshjoy',
-    image: null,
-    demo: '',
-    github: '',
-  },
-  {
-    slug: 'streamhyass',
-    color: '#6E4BF2',
-    name: 'StreamHyass',
-    kind: 'E-commerce',
-    stack: ['Laravel', 'MySQL'],
-    description: "Une boutique en ligne complète d'abonnements. Elle gère les produits, les commandes et les comptes utilisateurs.",
-    mockup: 'stream',
-    image: null,
-    demo: '',
-    github: '',
+      "Le site que vous êtes en train de visiter. Un portfolio éditorial et coloré construit avec React, Vite et Tailwind CSS : animations au défilement avec GSAP, mode clair et mode sombre, projets présentés dans des maquettes qui défilent et formulaire de contact.",
+    image: portfolioCover,
+    pages: { desktop: portfolioDesktop, mobile: portfolioMobile },
+    demo: 'https://hyass-dev.vercel.app',
+    live: true,
+    github: 'https://github.com/dkhyass52-dot/hyass.dev',
   },
 ]

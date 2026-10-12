@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { projects } from '../data/projects'
 import { headings } from '../data/site'
-import { ScrollTrigger, canPreview, finePointer, reduceMotion } from '../lib/motion'
+import { ScrollTrigger, canPreview, reduceMotion } from '../lib/motion'
 import { Arrow, LinkButton, Note, Plus, SectionHead } from './ui'
 import ProjectVisual from './Mockups'
 import Showcase from './Showcase'
@@ -53,22 +53,6 @@ function ProjectRow({ project: p, index, open, onToggle, onHover }) {
     if (open) setSeen(true)
   }, [open])
 
-  // Sur ordinateur, la maquette ouverte bouge légèrement avec la souris.
-  const tilt = finePointer
-    ? {
-        onPointerMove: (e) => {
-          const mk = e.currentTarget.querySelector('.mk')
-          if (!mk) return
-          const r = e.currentTarget.getBoundingClientRect()
-          mk.style.transform = `translate(${((e.clientX - r.left) / r.width - 0.5) * -14}px,${((e.clientY - r.top) / r.height - 0.5) * -10}px) scale(1.04)`
-        },
-        onPointerLeave: (e) => {
-          const mk = e.currentTarget.querySelector('.mk')
-          if (mk) mk.style.transform = ''
-        },
-      }
-    : {}
-
   return (
     <article className="pj fade" data-open={open} style={{ '--pc': p.color }}>
       <button
@@ -91,13 +75,7 @@ function ProjectRow({ project: p, index, open, onToggle, onHover }) {
       <div className="pj-detail" id={detailId}>
         <div>
           <div className="pj-inner">
-            {p.pages ? (
-              <div>{seen && <Showcase project={p} />}</div>
-            ) : (
-              <div {...tilt}>
-                <ProjectVisual project={p} />
-              </div>
-            )}
+            <div>{p.pages ? seen && <Showcase project={p} /> : <ProjectVisual project={p} />}</div>
             <div>
               <p className="desc">{p.description}</p>
               <dl>
