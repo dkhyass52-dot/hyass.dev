@@ -1,0 +1,29 @@
+/* Menu du haut (fixe) et menu mobile. */
+@layer components {
+  .nav { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: color-mix(in srgb, var(--paper) 86%, transparent); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+  .nav.scrolled { border-color: var(--rule); }
+  .nav-in { display: flex; align-items: center; justify-content: space-between; gap: 1rem; height: 72px; }
+
+  .brand { font-weight: 700; letter-spacing: -.02em; text-decoration: none; display: flex; align-items: center; gap: .65rem; font-size: 1.02rem; }
+  .brand i { width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--paper); display: grid; place-items: center; font-style: normal; font-size: .8rem; letter-spacing: .02em; transition: background .3s, transform .5s var(--ease); }
+  .brand:hover i { background: var(--orange); transform: rotate(-12deg); }
+
+  .nav-links { display: flex; gap: 1.8rem; font-size: .95rem; }
+  .nav-links a { text-decoration: none; color: var(--ink-2); transition: color .2s; }
+  .nav-links a:hover { color: var(--ink); }
+  .nav-cta { display: flex; align-items: center; gap: .9rem; }
+  .status { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--ink-2); }
+
+  .burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); place-items: center; }
+  .burger span { width: 16px; height: 1.5px; background: var(--ink); box-shadow: 0 5px 0 var(--ink), 0 -5px 0 var(--ink); }
+  .drawer { display: none; }
+
+  @media (max-width: 920px) {
+    .nav-links, .nav-cta .status, .nav-cta .btn { display: none; }
+    .burger { display: grid; }
+    .drawer { display: grid; gap: .2rem; overflow: hidden; max-height: 0; transition: max-height .5s var(--ease); }
+    .drawer.open { max-height: 420px; }
+    .drawer a { text-decoration: none; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; padding-block: .45rem; border-top: 1px solid var(--rule); }
+    .drawer a:last-child { margin-bottom: 1rem; }
+  }
+}

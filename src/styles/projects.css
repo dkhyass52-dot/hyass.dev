@@ -1,0 +1,50 @@
+/* Projets : liste en accordéon, une couleur par projet (--pc), aperçu flottant au survol. */
+@layer components {
+  .pj-note { position: absolute; right: 0; top: -3.4rem; --r: 3deg; }
+  .pj { --pc: var(--blue); border-bottom: 1px solid var(--rule); }
+
+  .pj-row { position: relative; isolation: isolate; width: 100%; display: grid; grid-template-columns: 3rem minmax(0, 1fr) minmax(0, 12rem) minmax(0, 14rem) 2.5rem; align-items: center; gap: 1rem; padding-block: 1.5rem; text-align: left; transition: color .3s; }
+  .pj-row::before { content: ""; position: absolute; z-index: -1; inset: .35rem -.9rem; border-radius: 12px; background: color-mix(in srgb, var(--pc) 13%, var(--paper)); transform: scaleX(0); transform-origin: left; transition: transform .55s var(--ease); }
+  .pj-row:hover::before, .pj[data-open="true"] .pj-row::before { transform: scaleX(1); }
+  .pj-row .n { font-size: .85rem; color: var(--ink-3); font-variant-numeric: tabular-nums; display: flex; align-items: center; gap: .45rem; }
+  .pj-row .n::before { content: ""; width: 9px; height: 9px; border-radius: 50%; background: var(--pc); transform: scale(.7); transition: transform .4s var(--ease); }
+  .pj-row:hover .n::before, .pj[data-open="true"] .n::before { transform: scale(1.15); }
+  .pj-row h3 { font-size: clamp(1.6rem, 3.6vw, 3rem); letter-spacing: -.035em; font-weight: 600; transition: transform .5s var(--ease); }
+  .pj-row:hover h3 { transform: translateX(.5rem); }
+  .pj-row .k { color: var(--ink-2); font-size: .95rem; }
+  .pj-row .s { color: var(--ink-3); font-size: .9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pj-row .plus { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule); display: grid; place-items: center; transition: transform .5s var(--ease), background .3s, border-color .3s, color .3s; }
+  .pj-row .plus svg { width: 16px; height: 16px; }
+  .pj-row:hover .plus { background: var(--pc); color: #fff; border-color: var(--pc); }
+  .pj[data-open="true"] .plus { transform: rotate(45deg); background: var(--pc); color: #fff; border-color: var(--pc); }
+  .pj-list:hover .pj:not(:hover) .pj-row { color: var(--ink-3); }
+
+  /* contenu qui se déplie */
+  .pj-detail { display: grid; grid-template-rows: 0fr; transition: grid-template-rows .7s var(--ease); }
+  .pj[data-open="true"] .pj-detail { grid-template-rows: 1fr; }
+  .pj-detail > div { overflow: hidden; min-height: 0; }
+  .pj-inner { display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(1.5rem, 4vw, 3.5rem); padding: .5rem 0 2.5rem 4rem; }
+  .pj-inner dl { display: grid; grid-template-columns: 7.5rem minmax(0, 1fr); gap: .8rem 1rem; margin: 1.6rem 0 0; font-size: .95rem; }
+  .pj-inner dt { color: var(--ink-3); }
+  .pj-inner dd { margin: 0; }
+  .pj-inner .desc { font-size: 1.15rem; line-height: 1.55; max-width: 46ch; }
+  .pj-links { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+  .js-motion .pj .shot { clip-path: inset(0 0 100% 0); transition: clip-path 1s .15s var(--ease); }
+  .js-motion .pj[data-open="true"] .shot { clip-path: inset(0 0 0 0); }
+  .pj .shot .mk { transition: transform .5s var(--ease); }
+
+  @media (max-width: 900px) {
+    .pj-row { grid-template-columns: 2.4rem minmax(0, 1fr) 2.5rem; padding-block: 1.2rem; }
+    .pj-row::before { inset: .3rem -.6rem; }
+    .pj-row .k, .pj-row .s { display: none; }
+    .pj-inner { grid-template-columns: 1fr; padding-left: 0; }
+    .pj-note { position: static; display: inline-block; margin-bottom: 1rem; }
+  }
+
+  /* ---- aperçu qui suit la souris ---- */
+  .preview { position: fixed; left: 0; top: 0; width: 360px; aspect-ratio: 16 / 11; z-index: 40; pointer-events: none; border-radius: 10px; overflow: hidden; outline: 3px solid var(--pc, #fff); outline-offset: -3px; opacity: 0; transform: translate(-50%, -50%) scale(.6); transition: opacity .3s; box-shadow: 0 30px 60px -20px rgba(20, 24, 26, .45); }
+  .preview.show { opacity: 1; }
+  .preview .pv { position: absolute; inset: 0; opacity: 0; transition: opacity .25s; border-radius: 0; aspect-ratio: auto; }
+  .preview .pv.current { opacity: 1; }
+  @media (hover: none), (max-width: 900px) { .preview { display: none; } }
+}

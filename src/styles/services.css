@@ -1,0 +1,64 @@
+/* Services : une couleur par carte (--c vive, --soft pastel) et des illustrations animées. */
+@layer components {
+  .svc { --c: var(--blue); --soft: var(--sky); padding: 1.8rem 1.6rem 2rem 0; display: grid; gap: 1rem; align-content: start; min-width: 0; }
+  .svc.c-orange { --c: var(--orange); --soft: var(--peach); }
+  .svc.c-green { --c: var(--green); --soft: var(--mint); }
+  .svc + .svc { padding-left: 1.6rem; border-left: 1px solid var(--rule); }
+  .svc h3 { font-size: 1.65rem; letter-spacing: -.02em; }
+  .svc p { color: var(--ink-2); }
+  .svc .label { color: var(--c); display: flex; align-items: center; gap: .5rem; }
+  .svc .label::before { content: ""; width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+  .svc .tag:first-child { background: var(--soft); border-color: transparent; color: var(--ink); }
+
+  .svc-vis { background: var(--soft); border-radius: 10px; aspect-ratio: 12 / 7; display: grid; place-items: center; overflow: hidden; margin-bottom: .4rem; position: relative; transition: background .5s; }
+  .svc:hover .svc-vis { background: color-mix(in srgb, var(--soft), var(--c) 18%); }
+
+  @media (max-width: 900px) {
+    .svc, .svc + .svc { padding: 1.6rem 0; border-left: 0; }
+    .svc + .svc { border-top: 1px solid var(--rule); }
+  }
+
+  /* ---- illustrations ---- */
+  .ill { width: 92%; height: auto; overflow: visible; }
+  .ill .ln0 { fill: none; stroke: var(--ink); stroke-width: 1.6; stroke-linecap: round; }
+  .ill .ln1 { fill: none; stroke: var(--c); stroke-width: 1.6; stroke-dasharray: 4 5; animation: dash 1s linear infinite; }
+  .ill .dt { fill: var(--ink-3); }
+  .ill .b { fill: #fff; stroke: var(--c); stroke-width: 1.6; stroke-dasharray: 1; stroke-dashoffset: 1; animation: build 5s var(--ease) infinite; }
+  .ill .b.acc { fill: var(--sun); }
+  .ill .b2 { animation-delay: .25s; }
+  .ill .b3 { animation-delay: .5s; }
+  .ill .b4 { animation-delay: .75s; }
+  .ill .b5 { animation-delay: 1s; }
+  .ill .b6 { animation-delay: 1.15s; }
+  .ill .b7 { animation-delay: 1.3s; }
+  .ill .cur { fill: var(--ink); stroke: #fff; stroke-width: 1; animation: cur-move 5s var(--ease) infinite; }
+  .ill .tx { font: 500 9px var(--sans); fill: var(--ink-3); }
+  .ill .pk { fill: var(--c); }
+  .ill .pk.g { fill: var(--violet); }
+  .ill .fl { fill: var(--ink-3); }
+  .ill .fl.o { fill: var(--orange); animation: blink 2.2s infinite; }
+  .ill .up { animation: up 3s var(--ease) infinite; }
+  .ill .trk { fill: #fff; stroke: rgba(20, 24, 26, .12); }
+  .ill .bar { fill: var(--green); transform-box: fill-box; transform-origin: left; animation: load 3s var(--ease) infinite; }
+  .ill .ok { fill: var(--green); transform-box: fill-box; transform-origin: center; animation: pop 3s var(--ease) infinite; }
+  .ill .okm { fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; animation: pop-mark 3s infinite; }
+}
+
+@keyframes dash { to { stroke-dashoffset: -9; } }
+@keyframes build {
+  0% { stroke-dashoffset: 1; fill-opacity: 0; }
+  22% { stroke-dashoffset: 0; fill-opacity: 0; }
+  32%, 82% { stroke-dashoffset: 0; fill-opacity: 1; }
+  95%, 100% { stroke-dashoffset: 0; fill-opacity: 0; opacity: 0; }
+}
+@keyframes cur-move {
+  0%, 30% { transform: translate(30px, 30px); }
+  45%, 55% { transform: translate(-92px, -6px); }
+  60% { transform: translate(-92px, -6px) scale(.85); }
+  65%, 100% { transform: translate(-92px, -6px); }
+}
+@keyframes blink { 50% { opacity: .25; } }
+@keyframes up { 0% { transform: translateY(16px); opacity: 0; } 25%, 70% { transform: none; opacity: 1; } 100% { transform: translateY(-14px); opacity: 0; } }
+@keyframes load { 0% { transform: scaleX(0); } 70%, 100% { transform: scaleX(1); } }
+@keyframes pop { 0%, 66% { transform: scale(0); } 76% { transform: scale(1.2); } 82%, 100% { transform: scale(1); } }
+@keyframes pop-mark { 0%, 70% { opacity: 0; } 78%, 100% { opacity: 1; } }

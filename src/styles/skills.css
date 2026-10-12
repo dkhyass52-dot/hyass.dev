@@ -1,0 +1,28 @@
+/* Compétences : une couleur par colonne (--kc). */
+@layer components {
+  .skills-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+  .sk { --kc: var(--blue); padding: 1.6rem 1.4rem 1.6rem 0; min-width: 0; }
+  .sk:nth-child(2) { --kc: var(--orange); }
+  .sk:nth-child(3) { --kc: var(--green); }
+  .sk:nth-child(4) { --kc: var(--violet); }
+  .sk + .sk { padding-left: 1.4rem; border-left: 1px solid var(--rule); }
+  .sk h3 { font-size: 1.1rem; font-weight: 600; letter-spacing: -.01em; margin-bottom: 1.1rem; display: flex; align-items: center; gap: .55rem; }
+  .sk h3::before { content: ""; width: 12px; height: 12px; border-radius: 4px; background: var(--kc); transform: rotate(45deg); }
+  .sk ul { display: grid; gap: .15rem; }
+  .sk li { font-size: 1.45rem; font-weight: 500; letter-spacing: -.02em; line-height: 1.35; transition: color .35s; cursor: default; width: fit-content; }
+  /* le décalage au survol se fait sur le texte, pour ne pas gêner l'animation d'entrée (GSAP) posée sur <li> */
+  .sk li span { display: inline-block; transition: transform .35s var(--ease); }
+  .sk li:hover { color: var(--kc); }
+  .sk li:hover span { transform: translateX(8px); }
+
+  @media (max-width: 900px) {
+    .skills-grid { grid-template-columns: 1fr 1fr; }
+    .sk:nth-child(3) { padding-left: 0; border-left: 0; }
+    .sk:nth-child(n+3) { border-top: 1px solid var(--rule); }
+  }
+  @media (max-width: 520px) {
+    .skills-grid { grid-template-columns: 1fr; }
+    .sk, .sk + .sk { padding-left: 0; border-left: 0; }
+    .sk + .sk { border-top: 1px solid var(--rule); }
+  }
+}

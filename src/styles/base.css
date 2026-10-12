@@ -1,0 +1,51 @@
+/* Couleurs, typographie et réglages de base. Les couleurs viennent de tailwind.config.js. */
+@layer base {
+  :root {
+    --paper: theme('colors.paper.DEFAULT');
+    --paper-2: theme('colors.paper.2');
+    --ink: theme('colors.ink.DEFAULT');
+    --ink-2: theme('colors.ink.2');
+    --ink-3: theme('colors.ink.3');
+    --rule: theme('colors.rule');
+
+    --blue: theme('colors.blue');
+    --orange: theme('colors.orange');
+    --sun: theme('colors.sun');
+    --violet: theme('colors.violet');
+    --green: theme('colors.green');
+
+    --sky: theme('colors.sky');
+    --peach: theme('colors.peach');
+    --butter: theme('colors.butter');
+    --mint: theme('colors.mint');
+    --lilac: theme('colors.lilac');
+    --sky-light: theme('colors.sky-light');
+    --mint-light: theme('colors.mint-light');
+
+    --pen: var(--blue); /* encre des annotations manuscrites */
+
+    --sans: theme('fontFamily.sans');
+    --hand: theme('fontFamily.hand');
+    --gut: clamp(16px, 4.5vw, 64px); /* marge latérale */
+    --ease: cubic-bezier(.22, .7, .12, 1);
+    color-scheme: light;
+  }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  main { overflow-x: clip; }
+  a { color: inherit; }
+  button { cursor: pointer; }
+  ::selection { background: var(--butter); }
+  :focus-visible { outline: 2px solid var(--pen); outline-offset: 3px; border-radius: 3px; }
+  h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -.025em; line-height: 1.04; text-wrap: balance; }
+  input::placeholder, textarea::placeholder { color: #9AA09D; }
+}

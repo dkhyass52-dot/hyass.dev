@@ -1,0 +1,18 @@
+/* Pied de page : grand nom (chaque lettre a sa couleur au survol) et heure locale. */
+@layer components {
+  .giant { font-size: clamp(4rem, 18.5vw, 17rem); font-weight: 800; letter-spacing: -.06em; line-height: .8; padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: .14em; white-space: nowrap; overflow: hidden; display: flex; justify-content: center; color: var(--ink); }
+  .giant .g { display: inline-block; transition: color .18s; }
+  .giant .g:nth-child(5n+1) { --gc: var(--blue); }
+  .giant .g:nth-child(5n+2) { --gc: var(--orange); }
+  .giant .g:nth-child(5n+3) { --gc: var(--sun); }
+  .giant .g:nth-child(5n+4) { --gc: var(--green); }
+  .giant .g:nth-child(5n) { --gc: var(--violet); }
+  .giant .g:hover, .giant .g.lit { color: var(--gc); }
+
+  .foot { border-top: 1px solid var(--rule); padding-block: 2.2rem calc(2.2rem + env(safe-area-inset-bottom, 0px)); display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem 2rem; font-size: .9rem; color: var(--ink-2); }
+  .foot nav { display: flex; flex-wrap: wrap; gap: 1.4rem; }
+  .foot a { text-decoration: none; }
+  .foot a:hover { color: var(--ink); }
+  .foot-clock { display: flex; align-items: center; gap: .5rem; }
+  .foot-clock b { color: var(--ink); font-weight: 600; font-variant-numeric: tabular-nums; }
+}

@@ -1,0 +1,18 @@
+/* Styles du site, rangés par section dans src/styles/. */
+@import './styles/base.css';
+@import './styles/primitives.css';
+@import './styles/nav.css';
+@import './styles/hero.css';
+@import './styles/band.css';
+@import './styles/about.css';
+@import './styles/services.css';
+@import './styles/projects.css';
+@import './styles/mockups.css';
+@import './styles/process.css';
+@import './styles/skills.css';
+@import './styles/contact.css';
+@import './styles/footer.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
