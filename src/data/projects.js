@@ -1,6 +1,9 @@
 import apaiCover from '../assets/projects/apai-cover.webp'
 import apaiDesktop from '../assets/projects/apai-desktop.webp'
 import apaiMobile from '../assets/projects/apai-mobile.webp'
+import tchaibouCover from '../assets/projects/tchaibou-cover.webp'
+import tchaibouDesktop from '../assets/projects/tchaibou-desktop.webp'
+import tchaibouMobile from '../assets/projects/tchaibou-mobile.webp'
 
 /*
  * Les projets affichés dans la section « Projets », dans l'ordre (le premier est ouvert au départ).
@@ -21,7 +24,7 @@ import apaiMobile from '../assets/projects/apai-mobile.webp'
 export const projects = [
   {
     slug: 'apai-benin',
-    color: '#C9963B',
+    color: '#2C5AA0',
     name: 'APAI-Bénin',
     kind: 'Site associatif',
     stack: ['WordPress', 'Elementor'],
@@ -30,6 +33,20 @@ export const projects = [
     image: apaiCover,
     pages: { desktop: apaiDesktop, mobile: apaiMobile },
     demo: 'https://apai-benin.org',
+    live: true,
+    github: null,
+  },
+  {
+    slug: 'tchaibou-textiles',
+    color: '#B8913F',
+    name: 'Tchaïbou Textiles',
+    kind: 'E-commerce',
+    stack: ['WordPress', 'WooCommerce'],
+    description:
+      "La boutique en ligne de Tchaïbou Textiles, une marque de tissus haut de gamme installée à Calavi. Catalogue par matière (Bazin, Lin, Velours, Brocart), nouveautés, vente au détail et en gros, paiement par Mobile Money ou carte bancaire et livraison au Bénin comme à l'international.",
+    image: tchaibouCover,
+    pages: { desktop: tchaibouDesktop, mobile: tchaibouMobile },
+    demo: 'https://hyacinthe.sacomdigitalagency.com',
     live: true,
     github: null,
   },
