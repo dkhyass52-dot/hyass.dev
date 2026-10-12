@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 import { nav, site } from '../data/site'
+import { useTheme } from '../lib/theme'
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
   const [open, setOpen] = useState(false)
+  const { theme, toggle } = useTheme()
+  const dark = theme === 'dark'
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 10)
@@ -34,6 +37,21 @@ export default function Nav() {
               <i className="dot" />
               Disponible
             </span>
+            <button
+              type="button"
+              className="theme-toggle"
+              onClick={toggle}
+              aria-label={dark ? 'Passer en mode clair' : 'Passer en mode sombre'}
+              title={dark ? 'Mode clair' : 'Mode sombre'}
+            >
+              <svg className="i-moon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5a8.5 8.5 0 1 0 11 11z" />
+              </svg>
+              <svg className="i-sun" viewBox="0 0 24 24" aria-hidden="true">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2.5v2M12 19.5v2M4.6 4.6l1.4 1.4M18 18l1.4 1.4M2.5 12h2M19.5 12h2M4.6 19.4 6 18M18 6l1.4-1.4" />
+              </svg>
+            </button>
             <a href="#contact" className="btn btn-ink btn-sm">
               Me contacter
             </a>

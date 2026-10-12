@@ -9,7 +9,8 @@ Le site a un style éditorial clair et coloré, avec des annotations au stylo. O
 - une section « À propos » en grille de cartes (bento) ;
 - des services illustrés et animés ;
 - les projets en accordéon, avec un aperçu qui suit la souris ;
-- une méthode en 4 étapes, les compétences, un formulaire de contact et un grand prénom en pied de page.
+- une méthode en 4 étapes, les compétences, un formulaire de contact et un grand prénom en pied de page ;
+- un mode clair et un mode sombre (bouton lune / soleil dans le menu).
 
 **Technologies :** React 18 · Vite 5 · Tailwind CSS 3 · GSAP (ScrollTrigger)
 
@@ -77,7 +78,19 @@ Remplace les fichiers dans `src/assets/images/` en gardant les mêmes noms :
 
 ### Changer les couleurs
 
-Toute la palette est dans `tailwind.config.js` (`colors`). Elle est automatiquement reprise en variables CSS (`--orange`, `--sun`…) dans `src/styles/base.css`.
+Toute la palette est dans `src/styles/base.css`, en deux jeux :
+
+- `:root { … }` pour le **mode clair** ;
+- `[data-theme='dark'] { … }` pour le **mode sombre**.
+
+Les classes Tailwind (`border-ink`, `bg-sun`…) utilisent ces mêmes variables. Elles changent donc toutes seules avec le mode.
+
+### Mode clair / sombre
+
+- Au premier passage, le site suit le réglage de l'appareil du visiteur (clair ou sombre).
+- Le bouton lune / soleil du menu change de mode. Le choix est mémorisé pour les visites suivantes.
+- Le mode est posé dans `index.html` avant l'affichage, pour éviter tout flash blanc.
+- La logique se trouve dans `src/lib/theme.js`.
 
 ## 3. Formulaire de contact
 
@@ -125,6 +138,7 @@ src/
 │   └── ui.jsx                  petites briques (boutons-liens, copier, notifications, stylo…)
 ├── lib/
 │   ├── motion.js           GSAP, préférences de l'appareil, défilement vers les ancres
+│   ├── theme.js            mode clair / sombre
 │   └── links.js            règle des liens vides (dev / en ligne)
 ├── styles/                 ← un fichier CSS par section
 └── index.css               ← point d'entrée des styles (Tailwind + sections)

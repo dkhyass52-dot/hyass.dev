@@ -20,7 +20,7 @@
   .form-wrap { position: relative; }
   .form-wrap::before { content: ""; position: absolute; inset: 0; border-radius: 12px; background: var(--blue); transform: translate(14px, 14px) rotate(1.6deg); }
   .form-wrap::after { content: ""; position: absolute; right: -12px; top: -14px; width: 44px; height: 44px; border-radius: 50%; background: var(--sun); z-index: 2; box-shadow: 0 10px 20px -10px rgba(20, 24, 26, .5); }
-  .form-card { position: relative; z-index: 1; display: grid; gap: 1.3rem; padding: clamp(1.3rem, 3vw, 2.2rem); background: #fff; border: 1px solid var(--rule); border-radius: 10px; }
+  .form-card { position: relative; z-index: 1; display: grid; gap: 1.3rem; padding: clamp(1.3rem, 3vw, 2.2rem); background: var(--card); border: 1px solid var(--rule); border-radius: 10px; }
   .fld { display: grid; gap: .45rem; }
   .fld > label, .fld > span { font-size: .85rem; font-weight: 600; }
   .fld input, .fld textarea { width: 100%; font: inherit; font-size: 1rem; color: var(--ink); background: var(--paper); border: 1px solid var(--rule); border-radius: 6px; padding: .8rem .9rem; outline: none; transition: border-color .2s, box-shadow .2s; }

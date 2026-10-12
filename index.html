@@ -8,6 +8,19 @@
     <meta name="theme-color" content="#F4F5F1" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    <!-- Mode clair / sombre posé avant l'affichage (choix enregistré, sinon réglage de l'appareil) : évite tout flash. -->
+    <script>
+      (function () {
+        var t = 'light'
+        try {
+          t = localStorage.getItem('theme')
+          if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+        } catch (e) {}
+        document.documentElement.dataset.theme = t
+        document.querySelector('meta[name="theme-color"]').setAttribute('content', t === 'dark' ? '#0E1113' : '#F4F5F1')
+      })()
+    </script>
+
     <!-- Partage sur les réseaux (WhatsApp, LinkedIn, Facebook…) -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="fr_FR" />

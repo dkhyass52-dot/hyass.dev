@@ -14,6 +14,14 @@
   .nav-cta { display: flex; align-items: center; gap: .9rem; }
   .status { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: var(--ink-2); }
 
+  /* bouton mode clair / sombre : la lune en mode clair, le soleil en mode sombre */
+  .theme-toggle { position: relative; flex: none; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--rule); color: var(--ink); display: grid; place-items: center; overflow: hidden; transition: background .3s, border-color .3s; }
+  .theme-toggle:hover { background: var(--paper-2); border-color: var(--ink-3); }
+  .theme-toggle svg { position: absolute; width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; transition: transform .55s var(--ease), opacity .3s; }
+  .theme-toggle .i-sun { transform: translateY(140%) rotate(90deg); opacity: 0; }
+  [data-theme='dark'] .theme-toggle .i-sun { transform: none; opacity: 1; color: var(--sun); }
+  [data-theme='dark'] .theme-toggle .i-moon { transform: translateY(-140%) rotate(-90deg); opacity: 0; }
+
   .burger { display: none; width: 44px; height: 44px; border-radius: 50%; border: 1px solid var(--rule); place-items: center; }
   .burger span { width: 16px; height: 1.5px; background: var(--ink); box-shadow: 0 5px 0 var(--ink), 0 -5px 0 var(--ink); }
   .drawer { display: none; }
@@ -21,6 +29,7 @@
   @media (max-width: 920px) {
     .nav-links, .nav-cta .status, .nav-cta .btn { display: none; }
     .burger { display: grid; }
+    .theme-toggle { width: 44px; height: 44px; }
     .drawer { display: grid; gap: .2rem; overflow: hidden; max-height: 0; transition: max-height .5s var(--ease); }
     .drawer.open { max-height: 420px; }
     .drawer a { text-decoration: none; font-size: 1.6rem; font-weight: 600; letter-spacing: -.02em; padding-block: .45rem; border-top: 1px solid var(--rule); }

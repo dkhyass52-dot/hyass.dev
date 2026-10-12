@@ -9,29 +9,28 @@ export default {
       md: '901px',
       lg: '921px',
     },
-    // La palette du site. Ces couleurs sont aussi exposées en variables CSS (--paper, --orange…) dans src/styles/base.css.
+    // Les couleurs pointent vers des variables CSS : leurs valeurs (mode clair ET mode sombre)
+    // sont définies dans src/styles/base.css. Changer une couleur = la changer là-bas.
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
       white: '#FFFFFF',
-      paper: { DEFAULT: '#F4F5F1', 2: '#EAECE6' },
-      ink: { DEFAULT: '#14181A', 2: '#4B5351', 3: '#7D8582' },
-      rule: '#D5D9D2',
+      paper: { DEFAULT: 'var(--paper)', 2: 'var(--paper-2)' },
+      card: 'var(--card)',
+      ink: { DEFAULT: 'var(--ink)', 2: 'var(--ink-2)', 3: 'var(--ink-3)' },
+      rule: 'var(--rule)',
       // couleurs vives
-      blue: '#2350D6',
-      orange: '#F2592A',
-      sun: '#FFC83D',
-      violet: '#6E4BF2',
-      green: '#0C7348',
+      blue: 'var(--blue)',
+      orange: 'var(--orange)',
+      sun: 'var(--sun)',
+      violet: 'var(--violet)',
+      green: 'var(--green)',
       // pastels
-      sky: '#DCE5FF',
-      peach: '#FFDCCC',
-      butter: '#FFE89A',
-      mint: '#C4EED5',
-      lilac: '#E6DEFF',
-      // couleurs claires utilisées sur fond sombre (section Méthode)
-      'sky-light': '#8FA8FF',
-      'mint-light': '#7FE0A8',
+      sky: 'var(--sky)',
+      peach: 'var(--peach)',
+      butter: 'var(--butter)',
+      mint: 'var(--mint)',
+      lilac: 'var(--lilac)',
     },
     extend: {
       fontFamily: {

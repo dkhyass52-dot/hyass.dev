@@ -1,6 +1,7 @@
 /* Méthode : panneau sombre, ligne dégradée qui se remplit au défilement, une couleur par étape (--sc). */
 @layer components {
-  .process { background: var(--ink); color: var(--paper); }
+  .process { background: var(--night); color: var(--on-night); }
+  [data-theme='dark'] .process { border-block: 1px solid var(--rule); }
   .process .label { color: #9AA39F; }
   .process h2 .hl { color: var(--sun); }
 
@@ -14,8 +15,8 @@
   .step.s2 { --sc: var(--orange); }
   .step.s3 { --sc: var(--sky-light); }
   .step.s4 { --sc: var(--mint-light); }
-  .step .num { width: 31px; height: 31px; border-radius: 50%; background: var(--ink); border: 1px solid var(--paper); display: grid; place-items: center; font-size: .8rem; font-weight: 600; position: relative; z-index: 1; transition: background .4s, color .4s, transform .5s var(--ease); }
-  .step.on .num { background: var(--sc); color: var(--ink); border-color: var(--sc); transform: scale(1.15); }
+  .step .num { width: 31px; height: 31px; border-radius: 50%; background: var(--night); border: 1px solid var(--on-night); display: grid; place-items: center; font-size: .8rem; font-weight: 600; position: relative; z-index: 1; transition: background .4s, color .4s, transform .5s var(--ease); }
+  .step.on .num { background: var(--sc); color: #14181A; border-color: var(--sc); transform: scale(1.15); }
   .step h3 { font-size: 1.45rem; margin-top: .6rem; }
   .step h3::after { content: ""; display: block; width: 28px; height: 3px; border-radius: 2px; background: var(--sc); margin-top: .7rem; transform: scaleX(0); transform-origin: left; transition: transform .6s .1s var(--ease); }
   .step.on h3::after, .no-motion .step h3::after { transform: scaleX(1); }

@@ -1,26 +1,38 @@
-/* Couleurs, typographie et réglages de base. Les couleurs viennent de tailwind.config.js. */
+/*
+ * Couleurs, typographie et réglages de base.
+ * Toutes les couleurs du site sont ici, en deux jeux : mode clair (:root) et mode sombre ([data-theme='dark']).
+ * Le mode est posé sur <html data-theme="…"> par index.html (avant l'affichage) puis par le bouton du menu.
+ */
 @layer base {
   :root {
-    --paper: theme('colors.paper.DEFAULT');
-    --paper-2: theme('colors.paper.2');
-    --ink: theme('colors.ink.DEFAULT');
-    --ink-2: theme('colors.ink.2');
-    --ink-3: theme('colors.ink.3');
-    --rule: theme('colors.rule');
+    /* surfaces et texte */
+    --paper: #F4F5F1;      /* fond de page */
+    --paper-2: #EAECE6;    /* fond secondaire */
+    --card: #FFFFFF;       /* cartes, formulaire */
+    --ink: #14181A;        /* texte principal */
+    --ink-2: #4B5351;      /* texte secondaire */
+    --ink-3: #7D8582;      /* texte discret, libellés */
+    --rule: #D5D9D2;       /* traits et bordures */
+    --night: #14181A;      /* panneaux sombres (Méthode, carte « Ma stack ») */
+    --on-night: #F4F5F1;   /* texte sur ces panneaux */
 
-    --blue: theme('colors.blue');
-    --orange: theme('colors.orange');
-    --sun: theme('colors.sun');
-    --violet: theme('colors.violet');
-    --green: theme('colors.green');
+    /* couleurs vives */
+    --blue: #2350D6;
+    --orange: #F2592A;
+    --sun: #FFC83D;
+    --violet: #6E4BF2;
+    --green: #0C7348;
 
-    --sky: theme('colors.sky');
-    --peach: theme('colors.peach');
-    --butter: theme('colors.butter');
-    --mint: theme('colors.mint');
-    --lilac: theme('colors.lilac');
-    --sky-light: theme('colors.sky-light');
-    --mint-light: theme('colors.mint-light');
+    /* pastels (fonds de cartes, surligneur) */
+    --sky: #DCE5FF;
+    --peach: #FFDCCC;
+    --butter: #FFE89A;
+    --mint: #C4EED5;
+    --lilac: #E6DEFF;
+
+    /* couleurs claires utilisées sur fond sombre */
+    --sky-light: #8FA8FF;
+    --mint-light: #7FE0A8;
 
     --pen: var(--blue); /* encre des annotations manuscrites */
 
@@ -29,6 +41,34 @@
     --gut: clamp(16px, 4.5vw, 64px); /* marge latérale */
     --ease: cubic-bezier(.22, .7, .12, 1);
     color-scheme: light;
+  }
+
+  [data-theme='dark'] {
+    --paper: #0E1113;
+    --paper-2: #171B1E;
+    --card: #15191C;
+    --ink: #ECEEE9;
+    --ink-2: #AEB5B1;
+    --ink-3: #7F8784;
+    --rule: #272D30;
+    --night: #08090A;
+    --on-night: #F4F5F1;
+
+    --blue: #4D6FF0;
+    --orange: #FF6A3D;
+    --sun: #FFC83D;
+    --violet: #8B6CFF;
+    --green: #2FB57A;
+
+    /* en sombre, les pastels deviennent des teintes transparentes */
+    --sky: rgba(77, 111, 240, .2);
+    --peach: rgba(255, 106, 61, .2);
+    --butter: rgba(255, 200, 61, .26);
+    --mint: rgba(47, 181, 122, .2);
+    --lilac: rgba(139, 108, 255, .22);
+
+    --pen: #8FA8FF;
+    color-scheme: dark;
   }
 
   body {
@@ -49,3 +89,12 @@
   h1, h2, h3 { margin: 0; font-weight: 600; letter-spacing: -.025em; line-height: 1.04; text-wrap: balance; }
   input::placeholder, textarea::placeholder { color: #9AA09D; }
 }
+
+/* ---- changement de mode ---- */
+/* Navigateurs récents : le nouveau mode se dévoile en cercle depuis le bouton (voir src/lib/theme.js). */
+::view-transition-old(root),
+::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
+/* Autres navigateurs : fondu rapide des couleurs. */
+html.theme-fade *,
+html.theme-fade *::before,
+html.theme-fade *::after { transition: background-color .35s ease, color .35s ease, border-color .35s ease, fill .35s ease, stroke .35s ease !important; }
