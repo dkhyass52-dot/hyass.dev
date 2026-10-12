@@ -55,10 +55,6 @@ export default function Hero() {
 
       <div className="hero-in wrap">
         <div className="hero-copy">
-          <div className="hero-kicker label">
-            <span>{site.role}</span>
-            <span>{site.location}</span>
-          </div>
           <h1>
             <span className="ln rv">{hero.greeting[0]}</span>
             <span className="ln rv">{hero.greeting[1]}</span>
@@ -89,22 +85,6 @@ export default function Hero() {
               Voir mon CV
             </LinkButton>
           </div>
-        </div>
-
-        <div className="hero-foot fade">
-          <a href="#apropos" className="scroll-cue">
-            <i />
-            Faites défiler
-          </a>
-          <ul className="hero-facts">
-            {hero.facts.map((f) => (
-              <li key={f.strong}>
-                {f.dot && <i className="dot" />}
-                <b>{f.strong}</b>
-                {f.text}
-              </li>
-            ))}
-          </ul>
         </div>
       </div>
     </section>

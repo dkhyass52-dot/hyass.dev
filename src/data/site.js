@@ -57,12 +57,6 @@ export const hero = {
   circled: 'de A à Z.',
   intro:
     "Je conçois l'interface, je développe le back-end et je mets votre projet en ligne. Mon objectif : des expériences numériques qui allient design, performance et simplicité d'utilisation.",
-  // Bande en bas de l'accueil. `dot: true` ajoute la pastille verte « disponible ».
-  facts: [
-    { strong: 'Disponible', text: 'pour vos projets', dot: true },
-    { strong: 'Full stack', text: 'front-end et back-end' },
-    { strong: 'De A à Z', text: "de l'idée à la mise en ligne" },
-  ],
 }
 
 // Bandeaux croisés sous l'accueil : le bleu (devant) et le jaune (derrière).
